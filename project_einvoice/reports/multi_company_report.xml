@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="paperformat_a4_multi" model="report.paperformat">
+    <field name="name">A4</field>
+    <field name="default" eval="True" />
+    <field name="format">A4</field>
+    <field name="page_height">0</field>
+    <field name="page_width">0</field>
+    <field name="orientation">Portrait</field>
+<!--    <field name="margin_top">110</field>-->
+    <field name="margin_top">105</field>
+    <field name="margin_bottom">30</field>
+    <field name="margin_left">9</field>
+    <field name="margin_right">9</field>
+    <field name="header_line" eval="False" />
+<!--    <field name="header_spacing">105</field>-->
+    <field name="header_spacing">100</field>
+    <field name="dpi">90</field>
+	</record>
+
+
+    <report id="ratal_invoice_report"
+      		model="account.move"
+      		string="Ratal E-Invoice"
+      		report_type="qweb-pdf"
+      		name="project_einvoice.ratal_invoice_report_view_1"
+      		file="project_einvoice.ratal_invoice_report_view_1"
+			paperformat="project_einvoice.paperformat_a4_multi"/>
+
+    <report id="accs_invoice_report"
+      		model="account.move"
+      		string="ACCS E-Invoice"
+      		report_type="qweb-pdf"
+      		name="project_einvoice.accs_invoice_report_view_1"
+      		file="project_einvoice.accs_invoice_report_view_1"
+			paperformat="project_einvoice.paperformat_a4_multi"/>
+</odoo>

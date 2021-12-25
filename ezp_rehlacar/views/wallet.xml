@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--      <record id="collection_cheque_search" model="ir.ui.view">-->
+<!--            <field name="name">wallet.amount.search</field>-->
+<!--            <field name="model">wallet.amount</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <search string="Cheques">-->
+<!--                    <field name="ref_id"/>-->
+<!--                    <field name="partner_id"/>-->
+<!--                    <field name="check_no"/>-->
+<!--                    <field name="holder_name"/>-->
+<!--                    <field name="bank_name"/>-->
+<!--                    <field name="debited_account"/>-->
+<!--                    <field name="state"/>-->
+<!--                    <separator/>-->
+<!--                    <filter string='Partner' name="partner_id" domain="[]" context="{'group_by': 'partner_id'}"/>-->
+<!--                    <filter string='Source' name="ref_id" domain="[]" context="{'group_by': 'ref_id'}"/>-->
+<!--                    <filter string='Bank Name' name="bank_name" domain="[]" context="{'group_by': 'bank_name'}"/>-->
+<!--                    <filter string='Cheque NO' name="check_no" domain="[]" context="{'group_by': 'check_no'}"/>-->
+<!--                    <filter string='State' name="state" domain="[]" context="{'group_by': 'state'}"/>-->
+<!--                </search>-->
+<!--            </field>-->
+<!--    </record>-->
+
+
+
+    <record id="wallet_amount_tree" model="ir.ui.view">
+        <field name="name">wallet.amount.tree</field>
+        <field name="model">wallet.amount</field>
+        <field name="arch" type="xml">
+            <tree create="0" >
+                <field name="date"/>
+                <field name="rehla_id"/>
+                <field name="trip_id"/>
+                <field name="passenger_id" invisible="1"/>
+                <field name="passenger"/>
+                <field name="driver_id"/>
+                <field name="reh_driver_id"/>
+                <field name="driver_cost"/>
+                <field name="trip_cost"/>
+                <field name="payment_type"/>
+                <field name="wallet_amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="actions_wallet_amount" model="ir.actions.act_window">
+        <field name="name">Driver Wallet</field>
+        <field name="res_model">wallet.amount</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new .
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem name="Driver Wallet"
+              id="menu_driver_wall" sequence="5"
+              parent="sale.menu_sale_report"
+              action="actions_wallet_amount"/>
+ 
+</odoo>

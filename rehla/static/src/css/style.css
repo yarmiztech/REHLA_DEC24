@@ -1,0 +1,26 @@
+.styled-table {
+    border: 1px solid black;
+
+  padding: 20px;
+  width:30%;
+
+
+
+    font-size: 25px;
+
+
+    text-align: center;
+
+
+     font-weight: bold;
+
+
+
+
+}
+th, td {
+
+
+    border: 1px solid black;
+
+}

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="profit_car_orders_search" model="ir.ui.view">
+        <field name="name">profit.car.orders.search</field>
+        <field name="model">profit.car.orders</field>
+        <field name="arch" type="xml">
+            <search string="Profits">
+                <field name="date"/>
+                <field name="rehla_id"/>
+                <field name="passenger"/>
+                <field name="driver"/>
+                <field name="trip_id"/>
+                <field name="passenger_id"/>
+                <field name="reh_driver_id"/>
+                <separator/>
+                <filter string='Rehla Id' name="rehla_id"/>
+                <filter string='Trip Id' name="trip_id" />
+                <filter string='Passenger' name="passenger_id" />
+                <filter string='Passenger Name' name="passenger" />
+                <filter string='Driver' name="reh_driver_id" />
+                <filter string='Driver Name' name="passenger" />
+<!--                <filter string='State' name="state" domain="[]" context="{'group_by': 'state'}"/>-->
+            </search>
+        </field>
+    </record>
+
+
+    <record id="profit_car_orders_tree" model="ir.ui.view">
+        <field name="name">profit.car.orders.tree</field>
+        <field name="model">profit.car.orders</field>
+        <field name="arch" type="xml">
+            <tree create="0">
+                <field name="date"/>
+                <field name="rehla_id"/>
+                <field name="trip_id"/>
+                <field name="passenger_id" invisible="1"/>
+                <field name="passenger"/>
+                <field name="reh_driver_id"/>
+                <field name="driver"/>
+                <field name="driver_cost"/>
+                <field name="trip_cost"/>
+                <field name="tax_amount"/>
+                <field name="revenue_profit"/>
+                <field name="profit"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="actions_profit_car_orders" model="ir.actions.act_window">
+        <field name="name">Rehla Profit</field>
+        <field name="res_model">profit.car.orders</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new .
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem name="Rehla Profit"
+              id="menu_reh_profits" sequence="4"
+              parent="sale.menu_sale_report"
+              action="actions_profit_car_orders"/>
+
+    <record id="wallet_amount_report_tree" model="ir.ui.view">
+        <field name="name">wallet.amount.report.tree</field>
+        <field name="model">wallet.amount.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="from_date"/>
+                <field name="to_date"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="wallet_amount_report_form" model="ir.ui.view">
+        <field name="name">Wallet Amount Report</field>
+        <field name="model">wallet.amount.report</field>
+        <field name="arch" type="xml">
+            <form string="Expense Report">
+                <header>
+                    <button name="wallet_amount_pay" states="draft" string="Pay Wallet Amount" type="object" class="btn-primary"/>
+                    <field name="state" widget="statusbar"/>
+
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="payment_type" widget="radio"/>
+                            <field name="driver_id"/>
+                            <!--                        <field name="partner_name"/>-->
+
+
+                        </group>
+                        <group>
+                            <field name="from_date"/>
+                            <field name="to_date"/>
+                            <field name="paying_amount"/>
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="Wallet Amounts">
+                            <field name="all_lines">
+                                <tree>
+                                    <field name="date"/>
+                                    <field name="passenger_id"/>
+                                    <field name="reh_driver_id"/>
+                                    <field name="passenger"/>
+                                    <field name="driver_id"/>
+                                    <field name="trip_cost"/>
+                                    <field name="driver_cost"/>
+                                    <field name="wallet_amount" sum="Wallet"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="wallet_amount_report_menu_action" model="ir.actions.act_window">
+        <field name="name">Wallet Amount Report</field>
+        <field name="res_model">wallet.amount.report</field>
+<!--        <field name="view_type">form</field>-->
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create New Contract Form Here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Wallet Amount Report"
+              id="manu_wallet_datw" sequence="4"
+              parent="sale.menu_sale_report"
+              action="wallet_amount_report_menu_action"/>
+
+
+</odoo>

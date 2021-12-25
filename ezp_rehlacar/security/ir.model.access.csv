@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_profit_car_orders,profit.car.orders,model_profit_car_orders,,1,1,1,1
+access_wallet_amount,wallet.amount,model_wallet_amount,,1,1,1,1
+access_wallet_amount_report,wallet.amount.report,model_wallet_amount_report,,1,1,1,1
+access_wallet_amount_report_lines,wallet.amount.report.lines,model_wallet_amount_report_lines,,1,1,1,1
+access_sales_uploads,sales.upload,model_sales_upload,,1,1,1,1
+access_transactions_report,transaction.report,model_transaction_report,,1,1,1,1
+access_json_configuration,json.configuration,model_json_configuration,,1,1,1,1
+access_json_payment_configuration,json.payment.configuration,model_json_payment_configuration,,1,1,1,1
